@@ -12,16 +12,6 @@ import openai
 
 # ---------------- Page Setup ----------------
 
-# ---------------- Logo (Centered + Safe Path) ----------------
-logo_path = os.path.join(os.path.dirname(__file__), "ML Logo 1.png")
-if os.path.exists(logo_path):
-    logo = Image.open(logo_path)
-    st.markdown("<div style='text-align:center;'>", unsafe_allow_html=True)
-    st.image(logo, width=160)
-    st.markdown("</div>", unsafe_allow_html=True)
-else:
-    st.warning("⚠️ Logo file not found. Please place it in /assets/logo.png")
-
 # ---------------- Custom Dark Theme ----------------
 st.markdown(
     """
@@ -50,6 +40,7 @@ from PIL import Image
 logo_path = "ML Logo 1.png"  # <-- change this if your logo has a different name or folder path
 if os.path.exists(logo_path):
     logo = Image.open(logo_path)
+    # Custom CSS for true centering
     st.markdown(
         """
         <style>
@@ -60,7 +51,12 @@ if os.path.exists(logo_path):
             justify-content: center;
             text-align: center;
             margin-top: -20px;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        .center-header img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
         .center-header h1 {
             color: #E2E6F3;
@@ -76,6 +72,7 @@ if os.path.exists(logo_path):
         """,
         unsafe_allow_html=True
     )
+
 
     st.markdown("<div class='center-header'>", unsafe_allow_html=True)
     st.image(logo, width=110)  # Adjust width as needed (100–130 works best)
