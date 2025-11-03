@@ -24,7 +24,7 @@ st.set_page_config(
 st.markdown(
     """
     <div style='text-align:center;'>
-        <img src='ML Logo 1.png' width='160'>
+        <img src='ML Logo 1.png' width='100'>
     </div>
     """,
     unsafe_allow_html=True
