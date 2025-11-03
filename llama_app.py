@@ -16,6 +16,8 @@ st.set_page_config(
     page_icon="🤖",
     layout="centered",
     initial_sidebar_state="collapsed"
+    #layout="wide",  # <-- ensures sidebar stays visible
+    initial_sidebar_state="expanded"  # <-- keeps sidebar open
 )
 
 # ---------------- Custom Dark Theme ----------------
