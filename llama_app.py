@@ -1,5 +1,6 @@
 import os
 import streamlit as st
+from PIL import Image
 from llama_index.core import (
     VectorStoreIndex,
     SimpleDirectoryReader,
@@ -16,70 +17,85 @@ import openai
 st.markdown(
     """
     <style>
-    body, .stApp, .css-18e3th9 {background-color: #18191e; color: #e2e6f3;}
-    .stChatMessage.user {background-color: #2a2b33; color: #e2e6f3; border-radius: 12px; padding: 10px;}
-    .stChatMessage.assistant {background-color: #1f1f25; color: #e2e6f3; border-radius: 12px; padding: 10px;}
-    .css-1d391kg {background-color: #18191e; color: #e2e6f3;}
-    button {background-color: #2a2b33; color: #e2e6f3; border-radius: 6px;}
+    body, .stApp, .css-18e3th9 {background-color: #000000; color: #e2e6f3;}
+    [data-testid="stSidebar"] {
+        background-color: #0e0f11 !important;
+        color: #e2e6f3;
+        min-width: 260px;
+        max-width: 260px;
+    }
+    [data-testid="stSidebarNav"] {display: none;}
+    button, .stTextInput>div>div>input {
+        background-color: #2a2b33; color: #e2e6f3; border-radius: 6px;
+    }
     button:hover {background-color: #3b3c46;}
-    .stTextInput>div>div>input {background-color: #2a2b33; color: #e2e6f3;}
     h1, h2, h3 {color: #e2e6f3;}
     .user-bubble, .assistant-bubble {
         border-radius: 12px; padding: 10px; margin: 8px 0;
     }
     .user-bubble {background-color: #2a2b33;}
     .assistant-bubble {background-color: #1f1f25;}
+
+    /* Sidebar Styles */
+    .sidebar-title {
+        text-align: center;
+        color: #E2E6F3;
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: 10px;
+    }
+    .online-dot {
+        height: 10px;
+        width: 10px;
+        background-color: #1DB954;
+        border-radius: 50%;
+        display: inline-block;
+        box-shadow: 0 0 8px #1DB954;
+        margin-top: 5px;
+    }
+
+    /* Chat Section Header */
+    .center-header {
+        text-align: center;
+        margin-top: -20px;
+        margin-bottom: 10px;
+    }
+    .center-header h1 {
+        color: #E2E6F3;
+        font-size: 28px;
+        margin-bottom: 0px;
+    }
+    .center-header p {
+        color: #AAAAAA;
+        font-size: 16px;
+        margin-top: 4px;
+    }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# ---------------- Header with Logo ----------------
-from PIL import Image
-
-logo_path = "ML Logo 1.png"  # <-- change this if your logo has a different name or folder path
-import streamlit as st
-from PIL import Image
-import os
-
-# ---- Sidebar Logo and Title ----
-logo_path = "ML Logo 1.png"  # make sure the file exists in your repo root or images/ folder
+# ---------------- Sidebar ----------------
+logo_path = "ML Logo 1.png"
 
 with st.sidebar:
-    st.markdown(
-        """
-        <style>
-        [data-testid="stSidebar"] {
-            background-color: #0e1117;  /* darker background */
-        }
-        .sidebar-title {
-            text-align: center;
-            color: #E2E6F3;
-            font-size: 20px;
-            font-weight: 600;
-            margin-top: 10px;
-            margin-bottom: 5px;
-        }
-        .sidebar-sub {
-            text-align: center;
-            color: #AAAAAA;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
     if os.path.exists(logo_path):
         logo = Image.open(logo_path)
         st.image(logo, use_column_width=True)
+        st.markdown("<div style='text-align:center'><span class='online-dot'></span></div>", unsafe_allow_html=True)
     else:
         st.warning("⚠️ Logo not found. Please ensure 'ML Logo 1.png' is in your app folder.")
 
-    st.markdown("<div class='sidebar-title'>🤖 CNDP Consulting AI Assistant</div>", unsafe_allow_html=True)
-    st.markdown("<div class='sidebar-sub'>AI-powered knowledge companion ✨</div>", unsafe_allow_html=True)
-
+# ---------------- Chat Section Header ----------------
+st.markdown(
+    """
+    <div class='center-header'>
+        <h1>🤖 CNDP Consulting AI Assistant</h1>
+        <p>AI-powered knowledge companion ✨</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 
 
