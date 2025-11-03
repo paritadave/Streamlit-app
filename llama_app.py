@@ -18,23 +18,91 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# ---------------- Custom Dark Theme ----------------
+# ---------------- Custom Total Black Theme ----------------
 st.markdown(
     """
     <style>
-    body, .stApp, .css-18e3th9 {background-color: #18191e; color: #e2e6f3;}
-    .stChatMessage.user {background-color: #2a2b33; color: #e2e6f3; border-radius: 12px; padding: 10px;}
-    .stChatMessage.assistant {background-color: #1f1f25; color: #e2e6f3; border-radius: 12px; padding: 10px;}
-    .css-1d391kg {background-color: #18191e; color: #e2e6f3;}
-    button {background-color: #2a2b33; color: #e2e6f3; border-radius: 6px;}
-    button:hover {background-color: #3b3c46;}
-    .stTextInput>div>div>input {background-color: #2a2b33; color: #e2e6f3;}
-    h1, h2, h3 {color: #e2e6f3;}
-    .user-bubble, .assistant-bubble {
-        border-radius: 12px; padding: 10px; margin: 8px 0;
+    /* Entire App Background */
+    html, body, .stApp {
+        background-color: #000000;
+        color: #e2e6f3;
     }
-    .user-bubble {background-color: #2a2b33;}
-    .assistant-bubble {background-color: #1f1f25;}
+
+    /* Sidebar Styling (fixed and always visible) */
+    [data-testid="stSidebar"] {
+        background-color: #000000 !important;
+        color: #e2e6f3 !important;
+        position: fixed !important;
+        left: 0 !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        overflow-y: auto !important;
+        width: 280px !important;
+        transition: none !important;
+    }
+
+    /* Main content adjusted since sidebar is fixed */
+    .block-container {
+        padding-left: 300px !important;
+        padding-right: 2rem !important;
+    }
+
+    /* Chat message styling */
+    .stChatMessage.user {
+        background-color: #111111 !important;
+        color: #e2e6f3 !important;
+        border-radius: 12px;
+        padding: 10px;
+    }
+    .stChatMessage.assistant {
+        background-color: #0d0d0d !important;
+        color: #e2e6f3 !important;
+        border-radius: 12px;
+        padding: 10px;
+    }
+
+    /* Input box */
+    .stTextInput>div>div>input {
+        background-color: #111111 !important;
+        color: #e2e6f3 !important;
+        border: 1px solid #333 !important;
+    }
+
+    /* Buttons */
+    button {
+        background-color: #111111 !important;
+        color: #e2e6f3 !important;
+        border: 1px solid #333 !important;
+        border-radius: 6px !important;
+    }
+    button:hover {
+        background-color: #222222 !important;
+    }
+
+    /* Headers and text */
+    h1, h2, h3, h4, h5, h6, p, label, span {
+        color: #e2e6f3 !important;
+    }
+
+    /* Remove sidebar animation when toggling */
+    [data-testid="stSidebar"] section {
+        transition: none !important;
+    }
+
+    /* Scrollbar - dark mode */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #000000;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #222222;
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #333333;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -43,7 +111,7 @@ st.markdown(
 # ---------------- Header with Logo ----------------
 from PIL import Image
 
-logo_path = "ML Logo.png"  # <-- change this if your logo has a different name or folder path
+logo_path = "ML Logo 1.png"  # <-- change this if your logo has a different name or folder path
 if os.path.exists(logo_path):
     logo = Image.open(logo_path)
     st.markdown(
