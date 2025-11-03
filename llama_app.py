@@ -38,35 +38,26 @@ st.markdown(
 from PIL import Image
 
 logo_path = "ML Logo 1.png"  # <-- change this if your logo has a different name or folder path
-if os.path.exists(logo_path):
-    logo = Image.open(logo_path)
-    # Custom CSS for true centering
+with st.sidebar:
     st.markdown(
         """
         <style>
-        .center-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        [data-testid="stSidebar"] {
+            background-color: #0e1117;  /* darker background */
+        }
+        .sidebar-title {
             text-align: center;
-            margin-top: -20px;
-            margin-bottom: 10px;
-        }
-        .center-header img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .center-header h1 {
             color: #E2E6F3;
-            margin-bottom: 0px;
-            font-size: 28px;
+            font-size: 20px;
+            font-weight: 600;
+            margin-top: 10px;
+            margin-bottom: 5px;
         }
-        .center-header p {
+        .sidebar-sub {
+            text-align: center;
             color: #AAAAAA;
-            font-size: 16px;
-            margin-top: 4px;
+            font-size: 14px;
+            margin-bottom: 15px;
         }
         </style>
         """,
@@ -75,7 +66,7 @@ if os.path.exists(logo_path):
 
 
     st.markdown("<div class='center-header'>", unsafe_allow_html=True)
-    st.image(logo, width=110)  # Adjust width as needed (100–130 works best)
+    st.image(logo, width=100)  # Adjust width as needed (100–130 works best)
     st.markdown(
         """
         <h1>🤖 CNDP Consulting AI Assistant</h1>
