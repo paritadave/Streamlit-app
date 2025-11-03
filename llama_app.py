@@ -20,6 +20,16 @@ st.set_page_config(
     initial_sidebar_state="expanded"  # <-- keeps sidebar open
 )
 
+# ---------------- Logo ----------------
+st.markdown(
+    """
+    <div style='text-align:center;'>
+        <img src='ML Logo 1.png' width='160'>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 # ---------------- Custom Dark Theme ----------------
 st.markdown(
     """
@@ -45,7 +55,7 @@ st.markdown(
 # ---------------- Header with Logo ----------------
 from PIL import Image
 
-logo_path = "ML Logo 1.png"  # <-- change this if your logo has a different name or folder path
+#logo_path = "ML Logo 1.png"  # <-- change this if your logo has a different name or folder path
 if os.path.exists(logo_path):
     logo = Image.open(logo_path)
     st.markdown(
@@ -107,10 +117,10 @@ with st.sidebar:
     st.markdown("### 🏢 CNDP Consulting Inc.")
     st.markdown("💡 Tagline: Inspire. Build. Transform")
     st.markdown("🌐 [Visit Our Website](https://www.cndpconsultinginc.com/)")
-    st.markdown("📧 info@cndpconsult.com")
+   # st.markdown("📧 info@cndpconsult.com")
     st.markdown("🔗 [LinkedIn](https://www.linkedin.com/company/cndp-consulting-inc/about/?viewAsMember=true)")
     st.markdown("📍 Milton, Ontario, Canada")
-    st.markdown("open a support ticket: (info@cndpconsult.com)")
+    st.markdown("📧Open a support ticket: (info@cndpconsult.com)")
     st.markdown("---")
 
     def clear_chat_history():
