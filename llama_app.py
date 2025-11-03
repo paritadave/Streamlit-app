@@ -55,7 +55,7 @@ st.markdown(
 # ---------------- Header with Logo ----------------
 from PIL import Image
 
-#logo_path = "ML Logo 1.png"  # <-- change this if your logo has a different name or folder path
+logo_path = "ML Logo 1.png"  # <-- change this if your logo has a different name or folder path
 if os.path.exists(logo_path):
     logo = Image.open(logo_path)
     st.markdown(
