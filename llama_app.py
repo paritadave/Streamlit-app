@@ -15,7 +15,7 @@ st.set_page_config(
     page_title="CNDP Consulting AI Assistant",
     page_icon="🤖",
     layout="centered",
-    initial_sidebar_state="collapsed"
+    #initial_sidebar_state="collapsed"
     #layout="wide",  # <-- ensures sidebar stays visible
     initial_sidebar_state="expanded"  # <-- keeps sidebar open
 )
