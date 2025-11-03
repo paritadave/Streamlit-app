@@ -11,24 +11,16 @@ from llama_index.core.node_parser import SentenceSplitter
 import openai
 
 # ---------------- Page Setup ----------------
-st.set_page_config(
-    page_title="CNDP Consulting AI Assistant",
-    page_icon="🤖",
-    layout="centered",
-    #initial_sidebar_state="collapsed"
-    #layout="wide",  # <-- ensures sidebar stays visible
-    initial_sidebar_state="expanded"  # <-- keeps sidebar open
-)
 
-# ---------------- Logo ----------------
-st.markdown(
-    """
-    <div style='text-align:center;'>
-        <img src='ML Logo 1.png' width='100'>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+# ---------------- Logo (Centered + Safe Path) ----------------
+logo_path = os.path.join(os.path.dirname(__file__), "ML Logo 1.png")
+if os.path.exists(logo_path):
+    logo = Image.open(logo_path)
+    st.markdown("<div style='text-align:center;'>", unsafe_allow_html=True)
+    st.image(logo, width=160)
+    st.markdown("</div>", unsafe_allow_html=True)
+else:
+    st.warning("⚠️ Logo file not found. Please place it in /assets/logo.png")
 
 # ---------------- Custom Dark Theme ----------------
 st.markdown(
