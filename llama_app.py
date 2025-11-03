@@ -38,6 +38,13 @@ st.markdown(
 from PIL import Image
 
 logo_path = "ML Logo 1.png"  # <-- change this if your logo has a different name or folder path
+import streamlit as st
+from PIL import Image
+import os
+
+# ---- Sidebar Logo and Title ----
+logo_path = "ML Logo 1.png"  # make sure the file exists in your repo root or images/ folder
+
 with st.sidebar:
     st.markdown(
         """
@@ -64,19 +71,15 @@ with st.sidebar:
         unsafe_allow_html=True
     )
 
+    if os.path.exists(logo_path):
+        logo = Image.open(logo_path)
+        st.image(logo, use_container_width=True)
+    else:
+        st.warning("⚠️ Logo not found. Please ensure 'ML Logo 1.png' is in your app folder.")
 
-    st.markdown("<div class='center-header'>", unsafe_allow_html=True)
-    st.image(logo, width=100)  # Adjust width as needed (100–130 works best)
-    st.markdown(
-        """
-        <h1>🤖 CNDP Consulting AI Assistant</h1>
-        <p>AI-powered knowledge companion ✨</p>
-        """,
-        unsafe_allow_html=True
-    )
-    st.markdown("</div>", unsafe_allow_html=True)
-else:
-    st.warning("⚠️ Logo not found. Please ensure 'logo.png' is in your app folder.")
+    st.markdown("<div class='sidebar-title'>🤖 CNDP Consulting AI Assistant</div>", unsafe_allow_html=True)
+    st.markdown("<div class='sidebar-sub'>AI-powered knowledge companion ✨</div>", unsafe_allow_html=True)
+
 
 
 
