@@ -73,7 +73,7 @@ with st.sidebar:
 
     if os.path.exists(logo_path):
         logo = Image.open(logo_path)
-        st.image(logo, use_container_width=True)
+        st.image(logo, use_column_width=True)
     else:
         st.warning("⚠️ Logo not found. Please ensure 'ML Logo 1.png' is in your app folder.")
 
