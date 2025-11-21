@@ -1,14 +1,26 @@
-name: Keep Streamlit App Awake
+name: Wake Streamlit App
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  # every 10 minutes UTC
-  workflow_dispatch:        # allows manual run if needed
+    - cron: "0 */5 * * * *"   # every 5 mins
+  workflow_dispatch:         # allow manual trigger
 
 jobs:
-  ping:
+  wake:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping Streamlit app
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
         run: |
-          curl -s -o /dev/null -w "%{http_code}" https://yourapp.streamlit.app
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Selenium script
+        run: python main.py
