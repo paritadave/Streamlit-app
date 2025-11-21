@@ -23,7 +23,8 @@ llama-index-readers-file
 accelerate
 torch 
 docx2txt
-
+selenium
+webdriver-manager
 
 #openai>=1.3.5
 #llama-index==0.10.55
@@ -40,6 +41,7 @@ requests
 unstructured[pdf]
 tenacity
 beautifulsoup4
+
 
 
 
