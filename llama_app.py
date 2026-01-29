@@ -125,7 +125,9 @@ with st.sidebar:
     def clear_chat_history():
         st.session_state.messages = [{"role": "assistant", "content": "👋 Chat cleared. How may I help you today?"}]
     st.button("🧹 Clear Chat", on_click=clear_chat_history)
-
+st.set_page_config(
+    initial_sidebar_state="collapsed"
+)
 # ---------------- Load Knowledge Base ----------------
 @st.cache_resource(show_spinner=False)
 def load_index():
